@@ -1,9 +1,13 @@
 import * as Session from 'supertokens-node/recipe/session'
-import ThirdPartyEmailPassword, {
-  Google,
+
+import ThirdPartyPasswordless, {
   Github,
-  Apple,
-} from 'supertokens-node/recipe/thirdpartyemailpassword'
+  Google,
+} from 'supertokens-node/recipe/thirdpartypasswordless'
+// import ThirdPartyEmailPassword, {
+//   Google,
+//   Github,
+// } from 'supertokens-node/recipe/thirdpartyemailpassword'
 import type { TypeInput } from 'supertokens-node/types'
 
 const websiteDomain =
@@ -28,7 +32,9 @@ export const config: TypeInput = {
     connectionURI: process.env.SUPERTOKENS_CONNECTION_URI,
   },
   recipeList: [
-    ThirdPartyEmailPassword.init({
+    ThirdPartyPasswordless.init({
+      flowType: "MAGIC_LINK",
+      contactMethod: "EMAIL",
       providers: [
         Google({
           clientId: process.env.SUPERTOKENS_GOOGLE_CLIENT_ID,
@@ -37,14 +43,6 @@ export const config: TypeInput = {
         Github({
           clientId: process.env.SUPERTOKENS_GITHUB_CLIENT_ID,
           clientSecret: process.env.SUPERTOKENS_GITHUB_CLIENT_SECRET,
-        }),
-        Apple({
-          clientId: process.env.SUPERTOKENS_APPLE_CLIENT_ID,
-          clientSecret: {
-            keyId: process.env.SUPERTOKENS_APPLE_SECRET_KEY_ID,
-            privateKey: process.env.SUPERTOKENS_APPLE_SECRET_PRIVATE_KEY,
-            teamId: process.env.SUPERTOKENS_APPLE_SECRET_TEAM_ID,
-          },
         }),
       ],
     }),

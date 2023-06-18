@@ -1,10 +1,9 @@
 import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react'
 import Session from 'supertokens-auth-react/recipe/session'
-import ThirdPartyEmailPassword, {
+import ThirdPartyPasswordless, {
   Github,
   Google,
-  Apple,
-} from 'supertokens-auth-react/recipe/thirdpartyemailpassword'
+} from 'supertokens-auth-react/recipe/thirdpartypasswordless'
 
 import { createAuth } from '@redwoodjs/auth-supertokens-web'
 import { isBrowser } from '@redwoodjs/prerender/browserUtils'
@@ -23,7 +22,7 @@ const superTokensClient = {
 isBrowser &&
   SuperTokens.init({
     appInfo: {
-      appName: 'SuperTokens RedwoodJS',
+      appName: 'botcadabra',
       apiDomain,
       websiteDomain,
       apiGatewayPath,
@@ -32,10 +31,14 @@ isBrowser &&
     },
     recipeList: [
       Session.init(),
-      ThirdPartyEmailPassword.init({
-        signInAndUpFeature: {
-          providers: [Github.init(), Google.init(), Apple.init()],
-        },
+      ThirdPartyPasswordless.init({
+        contactMethod: "EMAIL",
+        signInUpFeature: {
+          providers: [
+            Github.init(),
+            Google.init(),
+          ]
+        }
       }),
     ],
   })

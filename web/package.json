@@ -13,11 +13,14 @@
     ]
   },
   "dependencies": {
+    "@redwoodjs/auth-supertokens-web": "5.3.1",
     "@redwoodjs/forms": "5.3.1",
     "@redwoodjs/router": "5.3.1",
     "@redwoodjs/web": "5.3.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "supertokens-auth-react": "^0.30",
+    "supertokens-web-js": "^0.4"
   }
 }

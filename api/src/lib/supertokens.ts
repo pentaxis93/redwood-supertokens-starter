@@ -21,7 +21,7 @@ export const config: TypeInput = {
   framework: 'awsLambda',
   isInServerlessEnv: true,
   appInfo: {
-    appName: 'SuperTokens RedwoodJS',
+    appName: 'Botcadabra',
     apiDomain,
     websiteDomain,
     apiGatewayPath,
